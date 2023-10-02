@@ -93,21 +93,10 @@ def main():
 
         if st.button("OK"):
             with st.spinner("Processing your PDFs..."):
-
-                # Get PDF Text
                 raw_text = get_pdf_text(pdf_files)
-
-                # Get Text Chunks
                 text_chunks = get_chunk_text(raw_text)
-                
-
-                # Create Vector Store
-                
                 vector_store = get_vector_store(text_chunks)
                 st.write("DONE")
-
-                # Create conversation chain
-
                 st.session_state.conversation =  get_conversation_chain(vector_store)
 
 
